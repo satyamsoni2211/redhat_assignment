@@ -2,6 +2,17 @@ import mysql.connector as connector
 
 
 class DB:
+    '''
+        wrapper for getting the connection and cursor
+        to the database
+        @param host: host to connect to
+        @param user: username for the connection
+        @param db: database to connect to
+        @param password: password for the connection
+        @param port: port for the connection
+        @returns: DB wrapper object
+    '''
+
     def __init__(self, **kwargs):
         self.__host = 'localhost' if 'host' not in kwargs.keys() else kwargs.get('host')
         self.__user = 'root' if 'user' not in kwargs.keys() else kwargs.get('user')

@@ -5,6 +5,7 @@ import pickle
 import requests
 from collections import defaultdict
 
+# config variable used throughout the scripts
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CACHE_FILE = os.path.join(BASE_DIR, 'cache.pkl')
@@ -14,7 +15,7 @@ PEOPLE_API = BASE_API+'people/{}/'
 FILMS_API = BASE_API+'films/{}/'
 
 
-# for caching
+# black for caching the data
 if os.path.exists(CACHE_FILE):
     obj = pickle.load(open(CACHE_FILE, 'rb'))
 else:
@@ -31,6 +32,12 @@ else:
 
 
 def cache_obj():
+    '''
+        this pickles the caching object and 
+        dumps it to a pickle file for future use
+        everytime the object is altered 
+        a new object is pickled and saved
+    '''
     with open(CACHE_FILE, 'wb') as f:
         pickle.dump(obj, f)
 
@@ -38,6 +45,14 @@ def cache_obj():
 
 
 def process_data(index, url):
+    '''
+        function to process the data
+        fetch the data from the swapi
+        removes the references and caches and returns clean object
+        @param index: index corresponds to cache
+        @param url: url to fetch or read from cache
+        @returns: cleaned object
+    '''
     lpop_map = dict(
         cache_characters=['homeworld', 'films',
                           'species', 'vehicles', 'starships', 'url'],
@@ -60,6 +75,13 @@ def process_data(index, url):
 
 
 def get_hero_info(id):
+    '''
+        function to process the hero data
+        fetch the data from the swapi
+        removes the references and caches and returns clean object
+        @param id: id to fetch or read from cache
+        @returns: cleaned object
+    '''
     data = obj.get('hero_info').get(id)
     if data:
         return copy.deepcopy(data)
@@ -76,6 +98,13 @@ def get_hero_info(id):
 
 
 def get_film_info(id):
+    '''
+        function to process the film data
+        fetch the data from the swapi
+        removes the references and caches and returns clean object
+        @param id: id to fetch or read from cache
+        @returns: cleaned object
+    '''
     data = obj.get('film_info').get('id')
     if data:
         return copy.deepcopy(data)
@@ -88,6 +117,13 @@ def get_film_info(id):
 
 
 def get_film_complete_info(id):
+    '''
+        function to process the film data
+        fetch the data from the swapi
+        removes the references and caches and returns clean object
+        @param id: id to fetch or read from cache
+        @returns: cleaned object
+    '''
     data = obj.get('cache_film').get(id)
     if data:
         return copy.deepcopy(data)
