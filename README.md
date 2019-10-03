@@ -42,8 +42,11 @@ This contains two containers, one for *MySql* and other for the *Adminer* which 
 **MySql** would now be up and available on the below configurations:
 
 > HOST: **localhost**
+>
 > USER: **root**
+>
 > PASSWORD: **example**
+>
 > PORT: **3306**
 
 **Adminer** would be available on *http://localhost:8080* which can be accessed to interface with MySql container.
