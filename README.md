@@ -8,7 +8,7 @@
 - [Extra Information about files](#extra_info)
 
 ####  INTRODUCTION <a id='introduction'></a>
-This repository contains codes for the solution to the assignment. There are two mail files **task_one.py** and **task_two.py**  which corresponds to task one and task two. Below are the sections for pre requisites to run the programs and DB setup.
+This repository contains codes for the solution to the assignment. There are two main files **task_one.py** and **task_two.py**  which corresponds to task one and task two. Below are the sections for pre requisites to run the programs and DB setup.
 > I have used docker for setting up database which proved very handy for bootstrapping DB within seconds.
 
 ____
