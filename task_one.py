@@ -3,13 +3,12 @@ import requests
 from db_wrapper import DB
 from random import randint
 from collections import defaultdict
-from util import get_hero_info, get_film_info
+from util import get_hero_info, get_film_info, obj, cache_obj
 
 db = DB()
 con = db.con
 cur = db.cur
 rdata = defaultdict(list)
-# db.create_tables()
 
 data = [get_hero_info(i)
         for i in map(lambda x: randint(1, 87), range(15))]
@@ -35,3 +34,6 @@ print(cur.rowcount, 'inserted')
 for i in hero_film_mapping:
     rdata[film_data[i[1]]].append(hero_data[i[0]])
 print(json.dumps(rdata, indent=4))
+
+# caching
+cache_obj()
